@@ -1,0 +1,6 @@
+[
+	{
+		"caption": "Highlight Duplicates: Toggle highlighting",
+		"command": "toggle_highlight_duplicates"
+	}
+]

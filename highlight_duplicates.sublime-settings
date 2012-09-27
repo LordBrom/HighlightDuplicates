@@ -1,0 +1,7 @@
+{
+	// Color is determined by scope
+	"highlight_duplicates_color" : "invalid",
+
+	// By default plugin is enabled or disabled (true|false)
+	"highlight_duplicates_enabled" : true
+}
