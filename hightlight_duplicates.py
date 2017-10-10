@@ -31,7 +31,10 @@ def count_lines(lines, view):
     '''
     counts = defaultdict(list)
     for line in lines:
-        string = view.substr(line).strip()
+        if bool(settings.get('ignore_white_space', DEFAULT_IS_ENABLED)):
+            string = view.substr(line).strip()
+        else:
+            string = view.substr(line)
         if is_candidate(string):
             counts[string].append(line)
     return counts

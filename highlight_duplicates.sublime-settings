@@ -3,5 +3,8 @@
 	"highlight_duplicates_color" : "invalid",
 
 	// By default plugin is enabled or disabled (true|false)
-	"highlight_duplicates_enabled" : true
+	"highlight_duplicates_enabled" : true,
+
+	// If true, whitespace gets trimmed off each line before checking for matching lines
+	"ignore_white_space" : true
 }
