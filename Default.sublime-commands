@@ -2,5 +2,9 @@
 	{
 		"caption": "Highlight Duplicates: Toggle highlighting",
 		"command": "toggle_highlight_duplicates"
+	},
+	{
+		"caption": "Select Duplicates",
+		"command": "toggle_select_duplicates"
 	}
 ]

@@ -31,7 +31,10 @@ def count_lines(lines, view):
     '''
     counts = defaultdict(list)
     for line in lines:
-        string = view.substr(line).strip()
+        if bool(settings.get('ignore_white_space', DEFAULT_IS_ENABLED)):
+            string = view.substr(line).strip()
+        else:
+            string = view.substr(line)
         if is_candidate(string):
             counts[string].append(line)
     return counts
@@ -67,6 +70,15 @@ def show_lines(regions, view):
                         sublime.DRAW_OUTLINED)
 
 
+def add_lines(regions, view):
+    '''Merges all duplicated regions in one set and highlights them.'''
+    all_regions = []
+    for r in regions:
+        for i in r:
+            print(i)
+            view.sel().add(i)
+
+
 def highlight_duplicates(view):
     '''Main function that glues everything for hightlighting.'''
     # get all lines
@@ -75,6 +87,17 @@ def highlight_duplicates(view):
     duplicates = filter_counts(count_lines(lines, view))
     # show duplicated lines
     show_lines(duplicates.values(), view)
+
+
+
+def select_duplicates(view):
+    '''Main function that glues everything for hightlighting.'''
+    # get all lines
+    lines = view.lines(sublime.Region(0, view.size()))
+    # count and filter out non duplicated lines
+    duplicates = filter_counts(count_lines(lines, view))
+    # select duplicated lines
+    add_lines(duplicates.values(), view)
 
 
 def downlight_duplicates(window):
@@ -122,3 +145,8 @@ class ToggleHighlightDuplicatesCommand(sublime_plugin.WindowCommand):
             highlight_duplicates(self.window.active_view())
         else:
             downlight_duplicates(self.window)
+
+
+class ToggleSelectDuplicatesCommand(sublime_plugin.WindowCommand):
+    def run(self):
+        select_duplicates(self.window.active_view())
