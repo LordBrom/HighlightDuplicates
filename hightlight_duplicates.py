@@ -21,11 +21,6 @@ from collections import defaultdict
 DEFAULT_COLOR_SCOPE_NAME = "invalid"
 DEFAULT_IS_ENABLED = True
 
-#Set whether the plugin is on or off
-settings = sublime.load_settings('highlight_duplicates.sublime-settings')
-plugin_enabled = bool(settings.get('highlight_duplicates_enabled', DEFAULT_IS_ENABLED))
-
-
 def count_lines(lines, view):
     '''Counts line occurrences of a view using a hash.
     The lines are stripped and tested before count.
@@ -101,10 +96,20 @@ def select_duplicates(view):
     add_lines(duplicates.values(), view)
 
 
-def downlight_duplicates(window):
+def downlight_duplicates(view):
     '''Removes any region highlighted by this plugin accross all views.'''
-    for view in window.views():
-        view.erase_regions('DuplicatesHighlightListener')
+    view.erase_regions('DuplicatesHighlightListener')
+
+
+def update_settings(newSetting):
+    settings = sublime.load_settings('highlight_duplicates.sublime-settings')
+    settings.set('highlight_duplicates_enabled', newSetting)
+    sublime.save_settings('highlight_duplicates.sublime-settings')
+
+
+def isEnabled():
+    settings = sublime.load_settings('highlight_duplicates.sublime-settings')
+    return bool(settings.get('highlight_duplicates_enabled', DEFAULT_IS_ENABLED))
 
 
 class HighlightDuplicatesCommand(sublime_plugin.WindowCommand):
@@ -114,7 +119,7 @@ class HighlightDuplicatesCommand(sublime_plugin.WindowCommand):
     def run(self):
         # If toggling on, go ahead and perform a pass,
         # else clear the highlighting in all views
-        if plugin_enabled:
+        if isEnabled():
             highlight_duplicates(self.window.active_view())
         else:
             downlight_duplicates(self.window)
@@ -123,29 +128,35 @@ class HighlightDuplicatesCommand(sublime_plugin.WindowCommand):
 class DuplicatesHighlightListener(sublime_plugin.EventListener):
     '''Handles sone events to automatically run the command.'''
     def on_modified(self, view):
-        if plugin_enabled:
+        if isEnabled():
             highlight_duplicates(view)
+        else:
+            downlight_duplicates(view)
 
     def on_activated(self, view):
-        if plugin_enabled:
+        if isEnabled():
             highlight_duplicates(view)
+        else:
+            downlight_duplicates(view)
 
     def on_load(self, view):
-        if plugin_enabled:
+        if isEnabled():
             highlight_duplicates(view)
+        else:
+            downlight_duplicates(view)
 
 
 class ToggleHighlightDuplicatesCommand(sublime_plugin.WindowCommand):
     def run(self):
-        global plugin_enabled
-        plugin_enabled = False if plugin_enabled else True
 
         # If toggling on, go ahead and perform a pass,
         # else clear the highlighting in all views
-        if plugin_enabled:
-            highlight_duplicates(self.window.active_view())
+        if isEnabled():
+            update_settings(False)
+            downlight_duplicates(self.window.active_view())
         else:
-            downlight_duplicates(self.window)
+            update_settings(True)
+            highlight_duplicates(self.window.active_view())
 
 
 class ToggleSelectDuplicatesCommand(sublime_plugin.WindowCommand):
