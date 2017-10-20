@@ -1,17 +1,17 @@
 # Highlight Duplicates
 
 **Highlight duplicated lines.**
-This is a [Sublime Text 2](http://www.sublimetext.com/2) plugin.
+This is a [Sublime Text 3](http://www.sublimetext.com/3) plugin.
 
 
 ## Installation
 
-Go to your `Packages` subdirectory under ST2's data directory:
+Go to your `Packages` subdirectory under ST3's data directory:
 
-* Windows: `%APPDATA%\Sublime Text 2`
+* Windows: `%APPDATA%\Sublime Text 3`
 * OS X: `~/Library/Application Support/Sublime Text 2/Packages`
-* Linux: `~/.config/sublime-text-2`
-* Portable Installation: `Sublime Text 2/Data`
+* Linux: `~/.config/sublime-text-3`
+* Portable Installation: `Sublime Text 3/Data`
 
 Then clone this repository:
 
