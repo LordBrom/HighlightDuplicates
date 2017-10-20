@@ -27,7 +27,7 @@ def count_lines(lines, view):
     '''
     counts = defaultdict(list)
     for line in lines:
-        if bool(settings.get('ignore_white_space', DEFAULT_IS_ENABLED)):
+        if ignoreWhiteSpace():
             string = view.substr(line).strip()
         else:
             string = view.substr(line)
@@ -59,8 +59,7 @@ def show_lines(regions, view):
     all_regions = []
     for r in regions:
         all_regions.extend(r)
-    color_scope_name = settings.get('highlight_duplicates_color',
-                                        DEFAULT_COLOR_SCOPE_NAME)
+    color_scope_name = getHighlightColor()
     view.add_regions('DuplicatesHighlightListener',
                         all_regions, color_scope_name, '',
                         sublime.DRAW_OUTLINED)
@@ -100,16 +99,22 @@ def downlight_duplicates(view):
     '''Removes any region highlighted by this plugin accross all views.'''
     view.erase_regions('DuplicatesHighlightListener')
 
-
 def update_settings(newSetting):
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
     settings.set('highlight_duplicates_enabled', newSetting)
     sublime.save_settings('highlight_duplicates.sublime-settings')
 
-
 def isEnabled():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
     return bool(settings.get('highlight_duplicates_enabled', DEFAULT_IS_ENABLED))
+
+def ignoreWhiteSpace():
+    settings = sublime.load_settings('highlight_duplicates.sublime-settings')
+    return bool(settings.get('ignore_white_space', DEFAULT_IS_ENABLED))
+
+def getHighlightColor():
+    settings = sublime.load_settings('highlight_duplicates.sublime-settings')
+    return settings.get('highlight_duplicates_color', DEFAULT_COLOR_SCOPE_NAME)
 
 
 class HighlightDuplicatesCommand(sublime_plugin.WindowCommand):
