@@ -63,7 +63,7 @@ def show_lines(regions, view):
                                         DEFAULT_COLOR_SCOPE_NAME)
     view.add_regions('DuplicatesHighlightListener',
                         all_regions, color_scope_name, '',
-                        sublime.DRAW_SQUIGGLY_UNDERLINE)
+                        sublime.DRAW_OUTLINED)
 
 
 def add_lines(regions, view):
