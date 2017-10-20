@@ -1,1 +1,1 @@
-{"version": "2.0.0", "platforms": ["*"], "sublime_text": "*", "url": "https://github.com/LordBrom/HighlightDuplicates", "dependencies": [], "description": "Highlight duplicated lines in SublimeText 3"}
+{"version": "1.0.0", "platforms": ["*"], "sublime_text": "*", "url": "https://github.com/LordBrom/HighlightDuplicates", "dependencies": [], "description": "Highlight duplicated lines in SublimeText 3"}
