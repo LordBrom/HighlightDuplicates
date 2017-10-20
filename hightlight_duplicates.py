@@ -15,6 +15,7 @@ Config summary (see README.md for details):
 # inspired by https://github.com/SublimeText/TrailingSpaces
 import sublime
 import sublime_plugin
+import sys
 from collections import defaultdict
 
 DEFAULT_COLOR_SCOPE_NAME = "invalid"
@@ -45,7 +46,7 @@ def filter_counts(counts, treshold=1):
     lower or equal to the treshold, which defaults to 1.
     '''
     filtered = dict()
-    for k, v in counts.iteritems():
+    for k, v in counts.items():
         if len(v) > treshold:
             filtered[k] = v
     return filtered
@@ -66,16 +67,16 @@ def show_lines(regions, view):
     color_scope_name = settings.get('highlight_duplicates_color',
                                         DEFAULT_COLOR_SCOPE_NAME)
     view.add_regions('DuplicatesHighlightListener',
-                        all_regions, color_scope_name,
-                        sublime.DRAW_OUTLINED)
+                        all_regions, color_scope_name, '',
+                        sublime.DRAW_SQUIGGLY_UNDERLINE)
 
 
 def add_lines(regions, view):
     '''Merges all duplicated regions in one set and highlights them.'''
+    view.sel().clear()
     all_regions = []
     for r in regions:
         for i in r:
-            print(i)
             view.sel().add(i)
 
 
