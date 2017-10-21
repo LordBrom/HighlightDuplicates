@@ -15,7 +15,7 @@ Go to your `Packages` subdirectory under ST3's data directory:
 
 Then clone this repository:
 
-    git clone git://github.com/qur2/HighlightDuplicates.git
+    git clone git://github.com/lordbrom/HighlightDuplicates.git
 
 That's it!
 
