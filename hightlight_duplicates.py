@@ -8,6 +8,10 @@ Config summary (see README.md for details):
       "highlight_duplicates_color": "invalid"
     }
 
+@author: Nate Mills <mills.nate@gmail.com>
+@license: MIT (http://www.opensource.org/licenses/mit-license.php)
+@since: 2017-10-17
+
 @author: Aurelien Scoubeau <aurelien.scoubeau@gmail.com>
 @license: MIT (http://www.opensource.org/licenses/mit-license.php)
 @since: 2012-09-26
