@@ -19,7 +19,6 @@ Config summary (see README.md for details):
 # inspired by https://github.com/SublimeText/TrailingSpaces
 import sublime
 import sublime_plugin
-import sys
 from collections import defaultdict
 
 DEFAULT_COLOR_SCOPE_NAME = "invalid"
