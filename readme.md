@@ -20,6 +20,18 @@ Then clone this repository:
 That's it!
 
 
+## Commands
+
+### Toggle Highlighting 
+
+Using this command will turn the plugin on and off. Allowing you to only see the highlighted duplicates when you want, without having to disable/enable to plugin via the Package Control.
+
+
+### Select Duplicates
+
+Using this command will select the rows that would be highlighted when Highlight Duplicates is toggled on. The duplicate rows do not need to be highlighted in order for this command to work.
+
+
 ## Options
 
 Some options are available to customize the plugin look 'n feel. The
@@ -41,7 +53,7 @@ it should be defined as a color scope in your theme file.
 
 ### Ignore white space
 
-If this setting is true, the leading and trailing whitespace will be removed before being compared to other lines.
+If this setting is true, the leading and trailing whitespace will be removed before being compared to other lines. This setting also affects which lines are selected when using the 'Select Duplicates' command.
 For example, if `"ignore_white_space" : true` the following 2 lines will be counted as duplicates.
 ```
 1: <someRandomTag>
