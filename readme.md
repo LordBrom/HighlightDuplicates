@@ -39,13 +39,18 @@ as "invalid", "comment"... in "File Settings - User":
 it should be defined as a color scope in your theme file.
 
 
-### Enable or disable the plugin
+### Ignore white space
 
-If needed, you can enable or disable the plugin with the following option:
-```js
-{ "highlight_duplicates_enabled" : true }
+If this setting is true, the leading and trailing whitespace will be removed before being compared to other lines.
+For example, if `"ignore_white_space" : true` the following 2 lines will be counted as duplicates.
+```
+1: <someRandomTag>
+2:  <someRandomTag>
+```
+``` js
+{ "ignore_white_space" : true }
 // or
-{ "highlight_duplicates_enabled" : false }
+{ "ignore_white_space" : false }
 ```
 
 
