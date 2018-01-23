@@ -59,6 +59,11 @@ For example, if `"ignore_white_space" : true` the following 2 lines will be coun
 1: <someRandomTag>
 2:  <someRandomTag>
 ```
+However, these lines would not, since there is white space in line 1, that is not trailing or leading whitespace, which is not in line 2.
+```
+1: <someRandomTag>      </someRandomTag>
+2:  <someRandomTag></someRandomTag>
+```
 ``` js
 { "ignore_white_space" : true }
 // or
