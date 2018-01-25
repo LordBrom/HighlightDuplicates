@@ -79,5 +79,5 @@ For example, if `"ignore_white_space" : true` the following 2 lines will be coun
 However, these lines would not, since there is white space in line 1, that is not leading or trailing  whitespace, which is not in line 2.
 ``` html
 1: <someTag>      </someTag>
-2:  <someTag></someTag>
+2:      <someTag></someTag>
 ```
