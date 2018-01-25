@@ -9,7 +9,6 @@ This is a [Sublime Text 3](http://www.sublimetext.com/3) plugin.
 **Using Package Control** ([installation instructions](https://packagecontrol.io/installation))
 
 Press ctrl+shift+p (cmd+shift+p for OSX), then use the 'Package Control: Install Package' command.
-
 Search for 'HighlightDuplicates', and press enter to install.
 
 
