@@ -73,11 +73,11 @@ If this setting is true, the leading and trailing whitespace will be removed bef
 
 For example, if `"ignore_white_space" : true` the following 2 lines will be counted as duplicates.
 ``` html
-1: <someRandomTag>
-2:  <someRandomTag>
+1: <someTag></someTag>
+2:      <someTag></someTag>
 ```
 However, these lines would not, since there is white space in line 1, that is not leading or trailing  whitespace, which is not in line 2.
 ``` html
-1: <someRandomTag>      </someRandomTag>
-2:  <someRandomTag></someRandomTag>
+1: <someTag>      </someTag>
+2:  <someTag></someTag>
 ```
