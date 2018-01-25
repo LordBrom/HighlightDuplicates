@@ -55,12 +55,12 @@ it should be defined as a color scope in your theme file.
 
 If this setting is true, the leading and trailing whitespace will be removed before being compared to other lines. This setting also affects which lines are selected when using the 'Select Duplicates' command.
 For example, if `"ignore_white_space" : true` the following 2 lines will be counted as duplicates.
-``` js
+``` html
 1: <someRandomTag>
 2:  <someRandomTag>
 ```
 However, these lines would not, since there is white space in line 1, that is not leading or trailing  whitespace, which is not in line 2.
-``` js
+``` html
 1: <someRandomTag>      </someRandomTag>
 2:  <someRandomTag></someRandomTag>
 ```
