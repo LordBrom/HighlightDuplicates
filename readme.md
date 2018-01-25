@@ -81,8 +81,3 @@ However, these lines would not, since there is white space in line 1, that is no
 1: <someRandomTag>      </someRandomTag>
 2:  <someRandomTag></someRandomTag>
 ```
-
-
-## Run it
-
-As soon as it's installed, it's working. Then, you can toggle the highlighting with `Tools > Command Palette` (command + shift + p on OSX) and start typing `duplicates`. Select the command in the list and hit enter.
