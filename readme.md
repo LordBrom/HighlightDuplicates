@@ -64,11 +64,6 @@ However, these lines would not, since there is white space in line 1, that is no
 1: <someRandomTag>      </someRandomTag>
 2:  <someRandomTag></someRandomTag>
 ```
-``` js
-{ "ignore_white_space" : true }
-// or
-{ "ignore_white_space" : false }
-```
 
 
 ## Run it
