@@ -114,11 +114,11 @@ def isEnabled():
 
 def trimWhiteSpace():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
-    return bool(settings.get('highlight_duplicates_trim_white_space', DEFAULT_IS_ENABLED))
+    return bool(settings.get('trim_white_space', DEFAULT_IS_ENABLED))
 
 def ignoreCase():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
-    return bool(settings.get('highlight_duplicates_ignore_case', DEFAULT_IS_ENABLED))
+    return bool(settings.get('ignore_case', DEFAULT_IS_ENABLED))
 
 def getHighlightColor():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
