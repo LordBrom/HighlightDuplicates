@@ -87,7 +87,7 @@ However, these lines would not, since there is white space in line 1, that is no
 
 If this setting is true, upper and lower case letters will be concidered the same. This setting also affects which lines are selected when using the 'Select Duplicates' command.
 
-For example, if `"ignore_case" : true` the following 2 lines will be counted as duplicates.
+For example, if `"ignore_case" : true` the following 2 lines will be counted as duplicates.  
 ``` html
 1: <SomeTag></sOMeTag>
 2: <sometag></someTag>
