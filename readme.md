@@ -90,5 +90,5 @@ If this setting is true, upper and lower case letters will be concidered the sam
 For example, if `"ignore_case" : true` the following 2 lines will be counted as duplicates.
 ``` html
 1: <SomeTag></sOMeTag>
-2:      <sometag></someTag>
+2: <sometag></someTag>
 ```
