@@ -67,11 +67,11 @@ as "invalid", "comment"... in "File Settings - User":
 it should be defined as a color scope in your theme file.
 
 
-### Ignore white space
+### Trim white space
 
 If this setting is true, the leading and trailing whitespace will be removed before being compared to other lines. This setting also affects which lines are selected when using the 'Select Duplicates' command.
 
-For example, if `"ignore_white_space" : true` the following 2 lines will be counted as duplicates.
+For example, if `"trim_white_space" : true` the following 2 lines will be counted as duplicates.
 ``` html
 1: <someTag></someTag>
 2:      <someTag></someTag>
@@ -80,4 +80,15 @@ However, these lines would not, since there is white space in line 1, that is no
 ``` html
 1: <someTag>      </someTag>
 2:      <someTag></someTag>
+```
+
+
+### Ignore Case
+
+If this setting is true, upper and lower case letters will be concidered the same. This setting also affects which lines are selected when using the 'Select Duplicates' command.
+
+For example, if `"ignore_case" : true` the following 2 lines will be counted as duplicates.
+``` html
+1: <SomeTag></sOMeTag>
+2:      <sometag></someTag>
 ```
