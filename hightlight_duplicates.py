@@ -23,6 +23,7 @@ from collections import defaultdict
 
 DEFAULT_COLOR_SCOPE_NAME = "invalid"
 DEFAULT_IS_ENABLED = True
+DEFAULT_IS_DISABLED = False
 
 def count_lines(lines, view):
     '''Counts line occurrences of a view using a hash.
@@ -118,7 +119,7 @@ def trimWhiteSpace():
 
 def ignoreCase():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
-    return bool(settings.get('ignore_case', DEFAULT_IS_ENABLED))
+    return bool(settings.get('ignore_case', DEFAULT_IS_DISABLED))
 
 def getHighlightColor():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
