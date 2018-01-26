@@ -71,12 +71,12 @@ it should be defined as a color scope in your theme file.
 
 If this setting is true, the leading and trailing whitespace will be removed before being compared to other lines. This setting also affects which lines are selected when using the 'Select Duplicates' command.
 
-For example, if `"trim_white_space" : true` the following 2 lines will be counted as duplicates.
+For example, if `"trim_white_space" : true` the following 2 lines will be counted as duplicates.  
 ``` html
 1: <someTag></someTag>
 2:      <someTag></someTag>
-```
-However, these lines would not, since there is white space in line 1, that is not leading or trailing  whitespace, which is not in line 2.
+```  
+However, these lines would not, since there is white space in line 1, that is not leading or trailing  whitespace, which is not in line 2.  
 ``` html
 1: <someTag>      </someTag>
 2:      <someTag></someTag>
