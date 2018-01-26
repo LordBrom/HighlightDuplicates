@@ -6,7 +6,7 @@
 	"highlight_duplicates_enabled" : true,
 
 	// If true, whitespace gets trimmed off each line before checking for matching lines
-	"ignore_white_space" : true,
+	"trim_white_space" : true,
 
 	"ignore_case" : true
 }
