@@ -54,7 +54,8 @@ Some options are available to customize the plugin look 'n feel. The
 config keys goes into config files accessible throught the "Preferences"
 menu.
 
-### Change the highlighting color
+### Change the highlighting color  
+`Default: invalid`
 
 The highlighting color can be changed by providing a scope name such
 as "invalid", "comment"... in "File Settings - User":
@@ -67,7 +68,8 @@ as "invalid", "comment"... in "File Settings - User":
 it should be defined as a color scope in your theme file.
 
 
-### Trim white space
+### Trim white space  
+`Default: true`
 
 If this setting is true, the leading and trailing whitespace will be removed before being compared to other lines. This setting also affects which lines are selected when using the 'Select Duplicates' command.
 
@@ -83,7 +85,8 @@ However, these lines would not, since there is white space in line 1, that is no
 ```
 
 
-### Ignore Case
+### Ignore Case  
+`Default: false`
 
 If this setting is true, upper and lower case letters will be concidered the same. This setting also affects which lines are selected when using the 'Select Duplicates' command.
 
