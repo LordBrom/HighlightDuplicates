@@ -33,7 +33,7 @@ That's it!
 
 ### Toggle Highlighting 
 
-Using this command will turn the plugin on and off. Allowing you to only see the highlighted duplicates when you want, without having to disable/enable to plugin via the Package Control.
+Using this command will turn the plugin on and off. This allows you to see the highlighted only when you want without having to disable/enable to plugin via the Package Control.
 
 
 ### Select Duplicates
@@ -41,7 +41,7 @@ Using this command will turn the plugin on and off. Allowing you to only see the
 Using this command will select the rows that would be highlighted when Highlight Duplicates is toggled on. The duplicate rows do not need to be highlighted in order for this command to work.
 
 
-_Note:_ By default neither of these commands have a key binding, and can only be used via the Command Palette. You can set a key binding by adding one, or both of the following lines to the key binding file. (Preferences > Key Bindings) 
+_Note:_ By default neither of these commands have a key binding, and can only be used via the Command Palette. You can set a key binding by adding one, or both, of the following lines to the key binding file. (Preferences > Key Bindings) 
 
 ``` js
 { "keys": ["alt+shift+h"], "command": "toggle_highlight_duplicates" }
@@ -50,21 +50,13 @@ _Note:_ By default neither of these commands have a key binding, and can only be
 
 ## Options
 
-Some options are available to customize the plugin look 'n feel. The
-config keys goes into config files accessible throught the "Preferences"
-menu.
-
 ### Change the highlighting color  
 `Default: invalid`
 
 The highlighting color can be changed by providing a scope name such
 as "invalid", "comment"... in "File Settings - User":
 
-``` js
-{ "highlight_duplicates_color": "invalid" }
-```
-
-"invalid" is the default value. If you'd like to use a custom color,
+If you'd like to use a custom color,
 it should be defined as a color scope in your theme file.
 
 
