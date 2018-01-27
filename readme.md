@@ -50,27 +50,27 @@ _Note:_ By default neither of these commands have a key binding, and can only be
 
 ## Options
 
-### Change the highlighting color  
-`Default: invalid`
+### Change The Highlighting Color  
+`Default: "invalid"`
 
 The highlighting color can be changed by providing a scope name such
-as "invalid", "comment"... in "File Settings - User":
+as "invalid", "comment", etc...
 
 If you'd like to use a custom color,
 it should be defined as a color scope in your theme file.
 
 
-### Trim white space  
+### Trim White Space  
 `Default: true`
 
-If this setting is true, the leading and trailing whitespace will be removed before being compared to other lines. This setting also affects which lines are selected when using the 'Select Duplicates' command.
+If this setting is true, the leading and trailing white space will be removed before being compared to other lines. This setting also affects which lines are selected when using the 'Select Duplicates' command.
 
 For example, if `"trim_white_space" : true` the following 2 lines will be counted as duplicates.  
 ``` html
 1: <someTag></someTag>
 2:      <someTag></someTag>
 ```  
-However, these lines would not, since there is white space in line 1, that is not leading or trailing  whitespace, which is not in line 2.  
+However, the following lines would not be counted as duplicates. The reason for this is because there is white space in line 1 that is not leading or trailing, which does not appear in line 2. 
 ``` html
 1: <someTag>      </someTag>
 2:      <someTag></someTag>
@@ -80,7 +80,7 @@ However, these lines would not, since there is white space in line 1, that is no
 ### Ignore Case  
 `Default: false`
 
-If this setting is true, upper and lower case letters will be concidered the same. This setting also affects which lines are selected when using the 'Select Duplicates' command.
+If this setting is true, upper and lower case letters will be considered the same. This setting also affects which lines are selected when using the 'Select Duplicates' command.
 
 For example, if `"ignore_case" : true` the following 2 lines will be counted as duplicates.  
 ``` html
