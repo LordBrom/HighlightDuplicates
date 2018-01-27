@@ -1,6 +1,6 @@
 [
 	{
-		"caption": "Highlight Duplicates: Toggle highlighting",
+		"caption": "Highlight Duplicates: Toggle Highlighting",
 		"command": "toggle_highlight_duplicates"
 	},
 	{
