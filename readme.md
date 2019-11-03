@@ -43,7 +43,7 @@ Using this command will select the rows that would be highlighted when Highlight
 
 ### Remove Duplicates
 
-Using this command will remove all duplicate lines from the file. The first instance of each duplicate will be kept. This command is similar to the build in "Permute Lines > Unique" function found in the Edit menu, however this will follow the plugin's settings for what is considered a duplicate.
+Using this command will remove all duplicate lines, after the first instance, from the file. This command is similar to the build in "Permute Lines > Unique" function found in the Edit menu, however this will follow the plugin's settings for what is considered a duplicate.
 
 For example...
 ``` html
