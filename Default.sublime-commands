@@ -6,5 +6,9 @@
 	{
 		"caption": "Highlight Duplicates: Select Duplicates",
 		"command": "toggle_select_duplicates"
+	},
+	{
+		"caption": "Highlight Duplicates: Remove Duplicates",
+		"command": "remove_duplicates"
 	}
 ]

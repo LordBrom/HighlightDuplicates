@@ -52,6 +52,27 @@ def filter_counts(counts, treshold=1):
     return filtered
 
 
+def remove_first(counts):
+    '''Removes the first region of each duplicate line
+    '''
+    trimmed = dict()
+    for k, v in counts.items():
+        v.pop(0)
+        trimmed[k] = v
+    return trimmed
+
+
+def merge_results(countsList):
+    '''Merges the individual region lists
+    into one list
+    '''
+    merged = []
+    for k in countsList:
+        for v in k:
+            merged.append(v)
+    return merged
+
+
 def is_candidate(string):
     '''Tells if a string is a LOC candidate.
     A candidate is a string long enough after stripping some symbols.
@@ -79,6 +100,12 @@ def add_lines(regions, view):
             view.sel().add(i)
 
 
+def remove_lines(regions, view, edit):
+    all_regions = []
+    for r in reversed(regions):
+        view.erase(edit, sublime.Region(r.begin()-1, r.end()))
+
+
 def highlight_duplicates(view):
     '''Main function that glues everything for hightlighting.'''
     # get all lines
@@ -98,6 +125,19 @@ def select_duplicates(view):
     duplicates = filter_counts(count_lines(lines, view))
     # select duplicated lines
     add_lines(duplicates.values(), view)
+
+
+
+def remove_duplicates(view, edit):
+    '''Main function that glues everything for hightlighting.'''
+    # get all lines
+    lines = view.lines(sublime.Region(0, view.size()))
+    # count and filter out non duplicated lines
+    duplicates = remove_first(filter_counts(count_lines(lines, view)))
+    # select duplicated lines
+    merged = merge_results(duplicates.values())
+    merged.sort(key=lambda elm: elm.begin())
+    remove_lines(merged, view, edit)
 
 
 def downlight_duplicates(view):
@@ -176,3 +216,8 @@ class ToggleHighlightDuplicatesCommand(sublime_plugin.WindowCommand):
 class ToggleSelectDuplicatesCommand(sublime_plugin.WindowCommand):
     def run(self):
         select_duplicates(self.window.active_view())
+
+
+class RemoveDuplicatesCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        remove_duplicates(self.view, edit)
