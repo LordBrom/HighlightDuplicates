@@ -60,7 +60,7 @@ Would result in
 ```
 
 
-_Note:_ By default none of these commands have a key binding, and can only be used via the Command Palette. You can set a key binding by adding one, or both, of the following lines to the key binding file. (Preferences > Key Bindings) 
+_Note:_ By default none of these commands have a key binding, and can only be used via the Command Palette. You can set a key binding by adding any of the following lines to the key binding file. (Preferences > Key Bindings) 
 
 ``` js
 { "keys": ["alt+shift+h"], "command": "toggle_highlight_duplicates" }
