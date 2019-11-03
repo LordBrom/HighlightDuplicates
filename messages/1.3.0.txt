@@ -1,0 +1,19 @@
+Highlight Duplicates v1.3.0
+
+	• Added Remove Duplicates Command
+
+		Using this command will remove all duplicate lines from the file. The first instance of each duplicate will be kept.
+		This command is similar to the build in "Permute Lines > Unique" function found in the Edit menu, however with follow the Highlight Duplicates settings.
+
+		For example...
+
+		1: <someTag></someTag>
+		2: Content
+		3: <someTag></someTag>
+		4:
+
+		Would result in
+
+		1: <someTag></someTag>
+		2: Content
+		3:
