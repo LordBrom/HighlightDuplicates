@@ -2,8 +2,8 @@ Highlight Duplicates v1.3.0
 
 	• Added Remove Duplicates Command
 
-		Using this command will remove all duplicate lines from the file. The first instance of each duplicate will be kept.
-		This command is similar to the build in "Permute Lines > Unique" function found in the Edit menu, however this will follow this plugin's settings for what is considered a duplicate.
+		Using this command will remove all duplicate lines, after the first instance, from the file. 
+		This command is similar to the build in "Permute Lines > Unique" function found in the Edit menu, however this will follow the plugin's settings for what is considered a duplicate.
 
 		For example...
 
