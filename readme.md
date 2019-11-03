@@ -41,11 +41,31 @@ Using this command will turn the plugin on and off. This allows you to see the h
 Using this command will select the rows that would be highlighted when Highlight Duplicates is toggled on. The duplicate rows do not need to be highlighted in order for this command to work.
 
 
-_Note:_ By default neither of these commands have a key binding, and can only be used via the Command Palette. You can set a key binding by adding one, or both, of the following lines to the key binding file. (Preferences > Key Bindings) 
+### Remove Duplicates
+
+Using this command will remove all duplicate lines from the file. The first instance of each duplicate will be kept. This command is similar to the build in "Permute Lines > Unique" function found in the Edit menu, however with this you are able to ignore letter case. 
+
+For example...
+``` html
+1: <someTag></someTag>
+2: Content
+3: <someTag></someTag>
+4: 
+```  
+Would result in
+``` html
+1: <someTag></someTag>
+2: Content
+3: 
+```
+
+
+_Note:_ By default none of these commands have a key binding, and can only be used via the Command Palette. You can set a key binding by adding one, or both, of the following lines to the key binding file. (Preferences > Key Bindings) 
 
 ``` js
 { "keys": ["alt+shift+h"], "command": "toggle_highlight_duplicates" }
 { "keys": ["alt+shift+s"], "command": "toggle_select_duplicates" }
+{ "keys": ["alt+shift+r"], "command": "remove_duplicates" }
 ```
 
 ## Options
