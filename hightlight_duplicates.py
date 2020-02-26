@@ -134,7 +134,7 @@ def remove_duplicates(view, edit):
     # get all lines
     lines = view.lines(sublime.Region(0, view.size()))
     # count and filter out non duplicated lines
-    duplicates = remove_first(filter_counts(count_lines(lines, view, 0)))
+    duplicates = remove_first(filter_counts(count_lines(lines, view, getMinLineLength())))
     # select duplicated lines
     merged = merge_results(duplicates.values())
     merged.sort(key=lambda elm: elm.begin())
