@@ -10,5 +10,5 @@
 
 	"ignore_case" : false,
 
-	"min_line_length" : 3
+	"min_line_length" : 4
 }

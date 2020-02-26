@@ -5,4 +5,4 @@ Highlight Duplicates v1.4.0
 		This setting will allow you to specify how many characters a line needs to be considered as a duplicate.
 
 		Default:
-			"min_line_length": 3
+			"min_line_length": 4
