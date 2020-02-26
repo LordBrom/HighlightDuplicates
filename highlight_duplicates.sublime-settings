@@ -8,5 +8,7 @@
 	// If true, whitespace gets trimmed off each line before checking for matching lines
 	"trim_white_space" : true,
 
-	"ignore_case" : false
+	"ignore_case" : false,
+
+	"min_line_length" : 4
 }
