@@ -114,20 +114,7 @@ For example, if `"ignore_case" : true` the following 2 lines will be counted as 
 
 Lines with fewer characters than specified in this setting, will be ignored for all functions. Setting this to 1 will cause all non empty lines to be possible duplicates.
 
-For example, by default, only lines 7 and 8 will be selected when using the "select duplicate" command.  
-``` html
-1: 1
-2: 1
-3: 12
-4: 12
-5: 123
-6: 123
-7: 1234
-8: 1234
-```
-
-
-If this setting is set to 2, all the lines except lines 1 and 2 will be selected when using the "select duplicate" command.  
+For example, by default, only lines 7 and 8 will be selected when using the "select duplicate" command. If this setting is set to 2, all the lines except lines 1 and 2 will be selected when using the "select duplicate" command.  
 ``` html
 1: 1
 2: 1
