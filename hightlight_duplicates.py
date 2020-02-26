@@ -24,7 +24,7 @@ from collections import defaultdict
 DEFAULT_COLOR_SCOPE_NAME = "invalid"
 DEFAULT_IS_ENABLED = True
 DEFAULT_IS_DISABLED = False
-DEFAULT_MIN_LINE_LENGTH = 3
+DEFAULT_MIN_LINE_LENGTH = 4
 
 def count_lines(lines, view, minLineLength):
     '''Counts line occurrences of a view using a hash.
@@ -168,7 +168,12 @@ def getHighlightColor():
 
 def getMinLineLength():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
-    return settings.get('min_line_length', DEFAULT_MIN_LINE_LENGTH)
+    minLength = settings.get('min_line_length', DEFAULT_MIN_LINE_LENGTH)
+    if isinstance(minLength, int):
+        return minLength
+    else:
+        return DEFAULT_MIN_LINE_LENGTH
+
 
 
 class HighlightDuplicatesCommand(sublime_plugin.WindowCommand):
