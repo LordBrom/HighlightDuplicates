@@ -95,14 +95,12 @@ def show_lines(regions, view):
 def add_lines(regions, view):
     '''Merges all duplicated regions in one set and highlights them.'''
     view.sel().clear()
-    all_regions = []
     for r in regions:
         for i in r:
             view.sel().add(i)
 
 
 def remove_lines(regions, view, edit):
-    all_regions = []
     for r in reversed(regions):
         view.erase(edit, sublime.Region(r.begin()-1, r.end()))
 
@@ -223,9 +221,10 @@ class ToggleHighlightDuplicatesCommand(sublime_plugin.WindowCommand):
             highlight_duplicates(self.window.active_view())
 
 
-class ToggleSelectDuplicatesCommand(sublime_plugin.WindowCommand):
-    def run(self):
-        select_duplicates(self.window.active_view())
+class ToggleSelectDuplicatesCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        select_duplicates(self.view)
+        self.view.end_edit(edit)
 
 
 class RemoveDuplicatesCommand(sublime_plugin.TextCommand):
