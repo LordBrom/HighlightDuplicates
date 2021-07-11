@@ -10,5 +10,7 @@
 
 	"ignore_case" : false,
 
-	"min_line_length" : 4
+	"min_line_length" : 4,
+
+	"ignore_list" : []
 }
