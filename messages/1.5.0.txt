@@ -2,7 +2,7 @@ Highlight Duplicates v1.5.0
 
 	• Added Ignore List Setting
 
-		Lines matching entires in this list, will be ignored for all functions. Leading and trailing white space, as well as letter case, will be ignored when checking lines against the ignore list.
+		Lines matching entries in this list, will be ignored for all functions. Leading and trailing white space, as well as letter case, will be ignored when checking lines against the ignore list.
 
 		Default:
 			"ignore_list": []
