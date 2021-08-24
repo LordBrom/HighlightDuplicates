@@ -131,7 +131,7 @@ For example, by default, only lines 7 and 8 will be selected when using the "sel
 ### Ignore List
 `Default: []`
 
-Lines matching entires in this list, will be ignored for all functions.
+Lines matching entires in this list, will be ignored for all functions. Leading and trailing white space, as well as letter case, will be ignored when checking lines against the ignore list.
 
 `
 	"ignore_list": ["This line will be ignored"]
