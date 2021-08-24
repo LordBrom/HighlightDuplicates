@@ -8,9 +8,15 @@
 	// If true, whitespace gets trimmed off each line before checking for matching lines
 	"trim_white_space" : true,
 
+	// If true, letter casing is ignored for checking for matching lines
 	"ignore_case" : false,
 
+	// The minimun length a line needs to be in order to be included as a matching line
 	"min_line_length" : 4,
 
+	// The minimum number of duplicate lines needed to be found, in order to be included as a matching line
+	"min_duplicate_count" : 1,
+
+	// Lines that match entries in this list are ignored as matching lines
 	"ignore_list" : []
 }

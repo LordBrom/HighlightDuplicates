@@ -25,6 +25,7 @@ DEFAULT_COLOR_SCOPE_NAME = "invalid"
 DEFAULT_IS_ENABLED = True
 DEFAULT_IS_DISABLED = False
 DEFAULT_MIN_LINE_LENGTH = 4
+DEFAULT_MIN_DUPLICATE_COUNT = 1
 
 def count_lines(lines, view):
     '''Counts line occurrences of a view using a hash.
@@ -42,13 +43,14 @@ def count_lines(lines, view):
     return counts
 
 
-def filter_counts(counts, treshold=1):
+def filter_counts(counts):
     '''Filters the line counts by rejecting every line having a count
-    lower or equal to the treshold, which defaults to 1.
+    lower or equal to the "min_duplicate_count" user setting, which defaults to 1.
     '''
     filtered = dict()
+    threshold = getMinDuplicateCount();
     for k, v in counts.items():
-        if len(v) > treshold:
+        if len(v) > threshold:
             filtered[k] = v
     return filtered
 
@@ -175,6 +177,14 @@ def getMinLineLength():
         return minLength
     else:
         return DEFAULT_MIN_LINE_LENGTH
+
+def getMinDuplicateCount():
+    settings = sublime.load_settings('highlight_duplicates.sublime-settings')
+    minLength = settings.get('min_duplicate_count', DEFAULT_MIN_DUPLICATE_COUNT)
+    if isinstance(minLength, int):
+        return max(DEFAULT_MIN_DUPLICATE_COUNT, minLength)
+    else:
+        return DEFAULT_MIN_DUPLICATE_COUNT
 
 def getIgnoreList():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
