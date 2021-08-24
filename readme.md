@@ -71,7 +71,7 @@ _Note:_ By default none of these commands have a key binding, and can only be us
 ## Options
 
 ### Change The Highlighting Color
-`Default: "invalid"`
+`highlight_duplicates_color: "invalid"`
 
 The highlighting color can be changed by providing a scope name such
 as "invalid", "comment", etc...
@@ -81,7 +81,7 @@ it should be defined as a color scope in your theme file.
 
 
 ### Trim White Space
-`Default: true`
+`trim_white_space: true`
 
 If this setting is true, the leading and trailing white space will be removed before being compared to other lines. This setting also affects which lines are selected when using the 'Select Duplicates' command.
 
@@ -98,7 +98,7 @@ However, the following lines would not be counted as duplicates. The reason for 
 
 
 ### Ignore Case
-`Default: false`
+`ignore_case: false`
 
 If this setting is true, upper and lower case letters will be considered the same. This setting also affects which lines are selected when using the 'Select Duplicates' command.
 
@@ -110,7 +110,7 @@ For example, if `"ignore_case" : true` the following 2 lines will be counted as 
 
 
 ### Min Line Length
-`Default: 4`
+`min_line_length: 4`
 
 Lines with fewer characters than specified in this setting, will be ignored for all functions. Setting this to 1 will cause all non empty lines to be possible duplicates.
 
@@ -128,8 +128,25 @@ For example, by default, only lines 7 and 8 will be selected when using the "sel
 
 
 
+### Min Duplicate Count
+`min_duplicate_count: 1`
+
+The number of matching lines, beyond the first, that need to be found in order to be counted as duplicates.
+
+For example, setting this option to `2`, will make it so only lines 3-5 are highlighted below.
+
+``` html
+1: not this
+2: not this
+3: this
+4: this
+5: this
+```
+
+
+
 ### Ignore List
-`Default: []`
+`ignore_list: []`
 
 Lines matching entires in this list, will be ignored for all functions. Leading and trailing white space, as well as letter case, will be ignored when checking lines against the ignore list.
 
