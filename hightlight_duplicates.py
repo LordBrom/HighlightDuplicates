@@ -80,7 +80,7 @@ def is_candidate(string):
     '''
     minLineLength = getMinLineLength()
     ignoreList = getIgnoreList()
-    if string.strip().lower() in ignoreList:
+    if len(ignoreList) > 0 and string.strip().lower() in ignoreList:
         return False
     return len(string.strip('{}()[]/')) >= minLineLength
 
