@@ -1,4 +1,4 @@
-Highlight Duplicates v1.5.0
+Highlight Duplicates v1.6.0
 
 	• Added Min Duplicate Count Setting
 
