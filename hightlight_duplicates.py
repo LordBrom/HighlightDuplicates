@@ -26,7 +26,7 @@ DEFAULT_IS_ENABLED = True
 DEFAULT_IS_DISABLED = False
 DEFAULT_MIN_LINE_LENGTH = 4
 
-def count_lines(lines, view, minLineLength, ignoreList):
+def count_lines(lines, view):
     '''Counts line occurrences of a view using a hash.
     The lines are stripped and tested before count.
     '''
@@ -37,7 +37,7 @@ def count_lines(lines, view, minLineLength, ignoreList):
             string = string.strip()
         if ignoreCase():
             string = string.lower()
-        if is_candidate(string, minLineLength, ignoreList):
+        if is_candidate(string):
             counts[string].append(line)
     return counts
 
@@ -74,11 +74,13 @@ def merge_results(countsList):
     return merged
 
 
-def is_candidate(string, minLineLength, ignoreList):
+def is_candidate(string):
     '''Tells if a string is a LOC candidate.
     A candidate is a string long enough after stripping some symbols.
     '''
-    if string in ignoreList:
+    minLineLength = getMinLineLength()
+    ignoreList = getIgnoreList()
+    if string.strip().lower() in ignoreList:
         return False
     return len(string.strip('{}()[]/')) >= minLineLength
 
@@ -112,7 +114,7 @@ def highlight_duplicates(view):
     # get all lines
     lines = view.lines(sublime.Region(0, view.size()))
     # count and filter out non duplicated lines
-    duplicates = filter_counts(count_lines(lines, view, getMinLineLength(), getIgnoreList()))
+    duplicates = filter_counts(count_lines(lines, view))
     # show duplicated lines
     show_lines(duplicates.values(), view)
 
@@ -123,7 +125,7 @@ def select_duplicates(view):
     # get all lines
     lines = view.lines(sublime.Region(0, view.size()))
     # count and filter out non duplicated lines
-    duplicates = filter_counts(count_lines(lines, view, getMinLineLength(), getIgnoreList()))
+    duplicates = filter_counts(count_lines(lines, view))
     # select duplicated lines
     add_lines(duplicates.values(), view)
 
@@ -134,7 +136,7 @@ def remove_duplicates(view, edit):
     # get all lines
     lines = view.lines(sublime.Region(0, view.size()))
     # count and filter out non duplicated lines
-    duplicates = remove_first(filter_counts(count_lines(lines, view, getMinLineLength(), getIgnoreList())))
+    duplicates = remove_first(filter_counts(count_lines(lines, view)))
     # select duplicated lines
     merged = merge_results(duplicates.values())
     merged.sort(key=lambda elm: elm.begin())
@@ -177,6 +179,9 @@ def getMinLineLength():
 def getIgnoreList():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
     ignoreList = settings.get('ignore_list', [])
+    for i in range(len(ignoreList)):
+        ignoreList[i] = ignoreList[i].strip().lower()
+
     return ignoreList
 
 
