@@ -11,7 +11,7 @@
 	// If true, letter casing is ignored for checking for matching lines
 	"ignore_case" : false,
 
-	// The minimun length a line needs to be in order to be included as a matching line
+	// The minimum length a line needs to be in order to be included as a matching line
 	"min_line_length" : 4,
 
 	// The minimum number of duplicate lines needed to be found, in order to be included as a matching line

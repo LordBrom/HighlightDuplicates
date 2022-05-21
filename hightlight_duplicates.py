@@ -159,7 +159,7 @@ def remove_duplicates(view, edit):
 
 
 def downlight_duplicates(view):
-    '''Removes any region highlighted by this plugin accross all views.'''
+    '''Removes any region highlighted by this plugin across all views.'''
     view.erase_regions('DuplicatesHighlightListener')
 
 

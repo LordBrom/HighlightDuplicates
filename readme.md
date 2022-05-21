@@ -10,7 +10,7 @@ This is a [Sublime Text 3](http://www.sublimetext.com/3) (and ST2) plugin.
 Press ctrl+shift+p (cmd+shift+p for OSX), then use the 'Package Control: Install Package' command.
 Search for 'HighlightDuplicates', and press enter to install.
 
-**Manually**
+### Manually
 
 Go to your `Packages` subdirectory under ST3's data directory:
 
@@ -51,9 +51,9 @@ For example...
 Would result in
 
 ``` html
-1: <someTag></someTag>
-2: Content
-3:
+ 1: <someTag></someTag>
+ 2: Content
+ 3:
 ```
 
 _Note:_ By default none of these commands have a key binding, and can only be used via the Command Palette. You can set a key binding by adding any of the following lines to the key binding file. (Preferences > Key Bindings)
@@ -150,9 +150,7 @@ For example, setting this option to `2`, will make it so only lines 3-5 are high
 
 Lines matching entires in this list, will be ignored for all functions. Leading and trailing white space, as well as letter case, will be ignored when checking lines against the ignore list.
 
-`
- "ignore_list": ["This line will be ignored"]
-`
+`"ignore_list": ["This line will be ignored"]`
 
 ``` html
 1: This line will be ignored
