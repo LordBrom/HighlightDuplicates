@@ -18,5 +18,8 @@
 	"min_duplicate_count" : 1,
 
 	// Lines that match entries in this list are ignored as matching lines
-	"ignore_list" : []
+	"ignore_list" : [],
+
+	// If there is anything selected, that will be used instead of the whole file
+	"use_selection" : false
 }

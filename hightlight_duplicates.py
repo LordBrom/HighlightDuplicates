@@ -26,6 +26,8 @@ DEFAULT_IS_ENABLED = True
 DEFAULT_IS_DISABLED = False
 DEFAULT_MIN_LINE_LENGTH = 4
 DEFAULT_MIN_DUPLICATE_COUNT = 1
+DEFAULT_USE_SELECTION = False
+
 
 def count_lines(lines, view):
     '''Counts line occurrences of a view using a hash.
@@ -48,7 +50,7 @@ def filter_counts(counts):
     lower or equal to the "min_duplicate_count" user setting, which defaults to 1.
     '''
     filtered = dict()
-    threshold = getMinDuplicateCount();
+    threshold = getMinDuplicateCount()
     for k, v in counts.items():
         if len(v) > threshold:
             filtered[k] = v
@@ -94,8 +96,8 @@ def show_lines(regions, view):
         all_regions.extend(r)
     color_scope_name = getHighlightColor()
     view.add_regions('DuplicatesHighlightListener',
-                        all_regions, color_scope_name, '',
-                        sublime.DRAW_OUTLINED)
+                     all_regions, color_scope_name, '',
+                     sublime.DRAW_OUTLINED)
 
 
 def add_lines(regions, view):
@@ -111,32 +113,43 @@ def remove_lines(regions, view, edit):
         view.erase(edit, sublime.Region(r.begin()-1, r.end()))
 
 
+def get_lines(view, useSelection=False):
+    # get all lines
+    if useSelection:
+        result = []
+        for sel in view.sel():
+            result.extend(view.lines(sel))
+        return result
+    else:
+        return view.lines(sublime.Region(0, view.size()))
+
+
 def highlight_duplicates(view):
     '''Main function that glues everything for hightlighting.'''
     # get all lines
-    lines = view.lines(sublime.Region(0, view.size()))
+    lines = get_lines(view)
     # count and filter out non duplicated lines
     duplicates = filter_counts(count_lines(lines, view))
     # show duplicated lines
     show_lines(duplicates.values(), view)
 
 
-
 def select_duplicates(view):
     '''Main function that glues everything for hightlighting.'''
+    useSelection = getUseSelection() and len(view.sel()[0]) > 0
     # get all lines
-    lines = view.lines(sublime.Region(0, view.size()))
+    lines = get_lines(view, useSelection)
     # count and filter out non duplicated lines
     duplicates = filter_counts(count_lines(lines, view))
     # select duplicated lines
     add_lines(duplicates.values(), view)
 
 
-
 def remove_duplicates(view, edit):
     '''Main function that glues everything for hightlighting.'''
+    useSelection = getUseSelection() and len(view.sel()[0]) > 0
     # get all lines
-    lines = view.lines(sublime.Region(0, view.size()))
+    lines = get_lines(view, useSelection)
     # count and filter out non duplicated lines
     duplicates = remove_first(filter_counts(count_lines(lines, view)))
     # select duplicated lines
@@ -149,26 +162,32 @@ def downlight_duplicates(view):
     '''Removes any region highlighted by this plugin accross all views.'''
     view.erase_regions('DuplicatesHighlightListener')
 
+
 def update_settings(newSetting):
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
     settings.set('highlight_duplicates_enabled', newSetting)
     sublime.save_settings('highlight_duplicates.sublime-settings')
 
+
 def isEnabled():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
     return bool(settings.get('highlight_duplicates_enabled', DEFAULT_IS_ENABLED))
+
 
 def trimWhiteSpace():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
     return bool(settings.get('trim_white_space', DEFAULT_IS_ENABLED))
 
+
 def ignoreCase():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
     return bool(settings.get('ignore_case', DEFAULT_IS_DISABLED))
 
+
 def getHighlightColor():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
     return settings.get('highlight_duplicates_color', DEFAULT_COLOR_SCOPE_NAME)
+
 
 def getMinLineLength():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
@@ -178,13 +197,16 @@ def getMinLineLength():
     else:
         return DEFAULT_MIN_LINE_LENGTH
 
+
 def getMinDuplicateCount():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
-    minLength = settings.get('min_duplicate_count', DEFAULT_MIN_DUPLICATE_COUNT)
+    minLength = settings.get('min_duplicate_count',
+                             DEFAULT_MIN_DUPLICATE_COUNT)
     if isinstance(minLength, int):
         return max(DEFAULT_MIN_DUPLICATE_COUNT, minLength)
     else:
         return DEFAULT_MIN_DUPLICATE_COUNT
+
 
 def getIgnoreList():
     settings = sublime.load_settings('highlight_duplicates.sublime-settings')
@@ -195,11 +217,16 @@ def getIgnoreList():
     return ignoreList
 
 
+def getUseSelection():
+    settings = sublime.load_settings('highlight_duplicates.sublime-settings')
+    return settings.get('use_selection', DEFAULT_USE_SELECTION)
+
 
 class HighlightDuplicatesCommand(sublime_plugin.WindowCommand):
     '''Actual Sublime command. Run it in the console with:
     view.window().run_command('highlight_duplicates')
     '''
+
     def run(self):
         # If toggling on, go ahead and perform a pass,
         # else clear the highlighting in all views
@@ -211,6 +238,7 @@ class HighlightDuplicatesCommand(sublime_plugin.WindowCommand):
 
 class DuplicatesHighlightListener(sublime_plugin.EventListener):
     '''Handles sone events to automatically run the command.'''
+
     def on_modified(self, view):
         if isEnabled():
             highlight_duplicates(view)
