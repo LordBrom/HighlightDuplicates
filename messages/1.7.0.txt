@@ -1,0 +1,10 @@
+Highlight Duplicates v1.7.0
+
+	• Added Use Selected Content Setting
+
+		Option to make Select Duplicates and Remove Duplicates only affect selected lines.
+
+		Default:
+			"use_selection": false
+
+

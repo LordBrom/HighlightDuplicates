@@ -11,12 +11,15 @@
 	// If true, letter casing is ignored for checking for matching lines
 	"ignore_case" : false,
 
-	// The minimun length a line needs to be in order to be included as a matching line
+	// The minimum length a line needs to be in order to be included as a matching line
 	"min_line_length" : 4,
 
 	// The minimum number of duplicate lines needed to be found, in order to be included as a matching line
 	"min_duplicate_count" : 1,
 
 	// Lines that match entries in this list are ignored as matching lines
-	"ignore_list" : []
+	"ignore_list" : [],
+
+	// If there is anything selected, that will be used instead of the whole file
+	"use_selection" : false
 }
